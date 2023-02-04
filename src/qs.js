@@ -19,7 +19,7 @@
 function parse(url) {
   url = url.trim()
 
-  let reg = /^(.+?):\/\/([A-z0-9\.]+)(?:\:([0-9]{0,5})){0,1}([^\?\#\:]+)*(?:\?(.*?)){0,1}(?:\#(.*)){0,1}$/i
+  let reg = /^(.+?):\/\/([A-z0-9\.]+)(?:\:([0-9]{0,5}))?([^\?\#\:]+)*(?:\?([^#]*))?(?:\#(.*))?$/i
 
   let res
   try {
@@ -40,6 +40,7 @@ function parse(url) {
   }
 }
 
+
 /**
  * 传入url 获取 query 参数
  * query 参数位于 path（?） 和 hash (#) 之间
@@ -50,7 +51,7 @@ function getQuery(url) {
   let queryString
 
   try {
-    queryString = url.match(/(?:\?(.*?)){0,1}(?:\#.*)*$/i)[1]
+    queryString = url.match(/(?:\?([^#]*))/i)[1]
   } catch (err) {
     console.log(`fail to getQuery ${url}\n`, err);
   }
@@ -76,6 +77,8 @@ function setQuery(url = '', query) {
   }
   return (`${url}?${encodeURI(queryArr.join("&"))}`);
 }
+
+
 
 let qs = {
   parse,
