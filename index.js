@@ -1,5 +1,5 @@
-import handleQuery from './src/queryTool'
+import qs from './src/qs'
 
 export default {
-  handleQuery
+  qs
 }
