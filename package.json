@@ -10,6 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/wtdsn/utils-h.git"
   },
+  "files": [
+    "scr",
+    "index.js"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
