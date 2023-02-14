@@ -1,5 +1,5 @@
 function throttle(dur, fun, endCall = true) {
-  let pre = timer = 0
+  let pre = 0, timer = 0
 
   return function () {
     let cur = Date.now()
