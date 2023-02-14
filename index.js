@@ -1,5 +1,7 @@
-import qs from './src/qs'
+import qs from './dist/qs'
+import LazyLoad from './dist/lazyLoad'
 
 export default {
-  qs
+  qs,
+  LazyLoad
 }

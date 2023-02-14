@@ -1,6 +1,6 @@
 {
   "name": "utils-h",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "utils-package for front-end",
   "main": "index.js",
   "scripts": {
@@ -11,11 +11,14 @@
     "url": "git+https://github.com/wtdsn/utils-h.git"
   },
   "files": [
-    "scr",
+    "dist",
     "index.js"
   ],
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "utils",
+    "tool"
+  ],
+  "author": "wtdsn",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/wtdsn/utils-h/issues"
