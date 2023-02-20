@@ -23,7 +23,7 @@ function parse(url) {
 
   let res
   try {
-    matchRes = url.match(reg)
+    let matchRes = url.match(reg)
     res = {
       url,
       scheme: matchRes[1],
