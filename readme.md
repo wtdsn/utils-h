@@ -11,7 +11,7 @@ inluced qs , debounce ,throttle , LazyLoad ...
 ## import
 you can use it like :
 ```js
-import utilsH from 'utils-h'
+import * as UtilsH from 'utils-h'
 
 console.log(utilsH.throttle)
 ```
@@ -113,7 +113,7 @@ imgList.value = [
 
 <style>
 .container {
-  width: 100px auto;
+  margin: 100px auto;
   width: 200px;
   height: 250px;
   overflow-x: hidden;
