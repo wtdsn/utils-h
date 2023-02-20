@@ -97,11 +97,9 @@ class LazyLoadNew {
       entries.forEach(e => {
         if (e.isIntersecting) {
           let target = e.target
-          setTimeout(() => {
-            target.setAttribute('src', target.getAttribute('data-lazy-src'))
-            target.removeAttribute('data-lazy')
-            target.removeAttribute('data-lazy-src')
-          }, 200)
+          target.setAttribute('src', target.getAttribute('data-lazy-src'))
+          target.removeAttribute('data-lazy')
+          target.removeAttribute('data-lazy-src')
           observer.unobserve(target)
         }
       })
