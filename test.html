@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+    color: #fff;
+    text-shadow: 0 0 10px #333;
+  }
+
+  .con {
+    width: 100vw;
+  }
+
+  .inner {
+    width: 100%;
+    background-color: deepskyblue;
+  }
+
+  .head {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    padding: 10px;
+
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+    background-color: deepskyblue;
+  }
+
+  .wrapper {
+    padding-top: 60px;
+    padding-left: 200px;
+  }
+
+  .aside {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+
+    width: 180px;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+  }
+
+  .main {
+    height: 200vh;
+    padding: 20px;
+
+    background-color: #9878f6;
+  }
+
+  .footer {
+    padding: 20px;
+    background-color: aqua;
+  }
+
+  .info {
+    height: 200px;
+    padding: 20px;
+    background-color: aquamarine;
+  }
+
+  .sticky {
+    position: sticky;
+    top: 60px;
+    right: 0;
+
+    height: 200px;
+  }
+</style>
+
+
+<body>
+  <div class="con">
+    <div class="inner">
+      <header class="head">
+        Head
+      </header>
+      <div class="wrapper">
+        <aside class="aside">
+          Aside
+        </aside>
+        <div>
+          <main class="main">
+            <div>
+              <div class="info">Info</div>
+              <div class="sticky">Sticky</div>
+            </div>
+          </main>
+          <footer class="footer">Footer</footer>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>

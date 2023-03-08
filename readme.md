@@ -27,7 +27,7 @@ let f = debounce(100,cb,true)
 
 ## use tools
 
-### debounce
+### 🌀debounce
 `function debounce(wait: number, fun: Function, immediate?: boolean): Function`
 
 - wait (ms)
@@ -47,7 +47,7 @@ let cbWithDebounce = debounce(200,cb,true)
 ele.onclick = cbWithDebounce
 ```
 
-### throttle
+### 🌈throttle
 `function throttle(dur: number, fun: Function, endCall?: boolean): Function`
 
 - dur(ms)
@@ -67,7 +67,7 @@ let cbWithThrottle = throttle(100,cb)
 ele.onsroll = cbWithThrottle
 ```
 
-### LazyLoad
+### 🦀LazyLoad
 only form img , LazyLoad is a class
 
 
@@ -127,7 +127,7 @@ img {
 </style>
 ```
 
-### qs
+### 🐻qs
 `let {qs} from 'utils-h'`
 #### methods
 
@@ -178,3 +178,65 @@ console.log(qo)
   console.log(url)
   // http://abc.com?a=1&b=2
 ```
+
+### 🐞Validator
+```js
+const validator = new Validator()
+```
+
+### methods
+- **checkEmpty(text)**
+if text is empty string or text only has space , it will return false
+
+- **checkEqual(text1,text2)**
+
+- **checkObjEqual(obj1,ibj2,kesy?)**
+examples
+
+1. without keys , keys will from Object.keys(obj1)
+```js
+let obj1 = {
+  a:1,
+  b:2
+},
+obj2 = {
+  a:1,
+  b:2
+}
+validator.checkObjEqual(obj1,obj2) // true
+```
+
+2. check keys
+```js
+let obj1 = {
+  a:1,
+  b:'2',
+  c:{
+    d:3
+  },
+  e:false
+},
+obj2 = {
+  a:1,
+  b:false,
+  c:{
+    d:3
+  }
+}
+validator.checkObjEqual(obj1,obj2,['a','c.d']) // true
+```
+
+- **checkLen(text,minL,maxL)**
+- **checkRange(num,min,max,loose = false)**
+if loose is true , num can be 'number string'
+```js
+checkRange('12',0,12) // false  '12' is string
+checkRange('12',0,12,true) // true  '12' will translate to 12
+```
+
+- **checkIsNum(num,loose = false,canbeNaN = false)**
+if loose is true , it can be 'number string'
+if canbeNaN is true , NaN will return true
+
+
+- ... doing
