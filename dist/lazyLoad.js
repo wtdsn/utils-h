@@ -125,12 +125,12 @@ class LazyLoadNew {
   }
 }
 
-let LazyLoad
-if (window.IntersectionObserver) {
-  LazyLoad = LazyLoadNew
-} else {
-  LazyLoad = LazyLoadOld
+function LazyLoad(root) {
+  if (window.IntersectionObserver) {
+    return new LazyLoadNew(root)
+  } else {
+    return new LazyLoadOld(root)
+  }
 }
-
 
 export default LazyLoad
