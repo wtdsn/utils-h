@@ -179,6 +179,33 @@ console.log(qo)
   // http://abc.com?a=1&b=2
 ```
 
+
+
+### 🕐getTime
+
+```js
+const time = getTime(format)
+
+getTime('yyyy')  // 2023
+
+getTime('mm')  // 03   (month
+getTime('m')  // 3   (month
+
+getTime('dd')  // 21   (day
+getTime('d')  // 21   (day
+
+getTime('hh:mimi:ss')  // 08:06:36
+geTime('h:mi:s') // 8:6:36
+
+getTime('yy/m/d hh:mimi:ss')  // 23/3/21 08:06:36
+```
+
+
+
+
+
+
+
 ### 🐞Validator
 ```js
 const validator = new Validator()

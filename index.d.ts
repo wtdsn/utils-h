@@ -21,16 +21,6 @@ export class Validator {
   checkByRule(rule: number | string, obj: any, options?: any): boolean
 }
 
-interface parseResInter {
-  url: string,
-  scheme: string,
-  domain: string,
-  port: string,
-  path: string,
-  query: string,
-  hash: string,
-}
-
 
 interface parseResInter {
   url: string,
@@ -51,3 +41,5 @@ export namespace qs {
   function getQuery(url: string): queryInter
   function setQuery(url: string, query: queryInter): string
 }
+
+export function getTime(format: string): string
