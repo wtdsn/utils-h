@@ -1,6 +1,6 @@
 # utils-h
-utils-h 是一个前端工具包，
-包括  qs , debounce ,throttle , LazyLoad , getTime , 等函数或类等 API
+utils-h is a package for front-end
+inluced qs , debounce ,throttle , LazyLoad ...
 
 
 ## download
@@ -9,14 +9,14 @@ utils-h 是一个前端工具包，
 ```
 
 ## import
-可以通过此，全部引入
+you can use it like :
 ```js
 import * as UtilsH from 'utils-h'
 
 console.log(utilsH.throttle)
 ```
 
-或者仅引入你需要使用的
+or
 
 ```js
 import {debounce} from 'utils-h'
@@ -28,14 +28,12 @@ let f = debounce(100,cb,true)
 ## use tools
 
 ### 🌀debounce
-防抖函数
-
 `function debounce(wait: number, fun: Function, immediate?: boolean): Function`
 
 - wait (ms)
 - fun
 - immediate
-> 如果 immediate 是 true , 防抖函数会立即调用 ，默认 false
+If true, fun will be executed immediately , default false
 
 ```ts
 import { debounce } from 'utils-h'
@@ -50,13 +48,12 @@ ele.onclick = cbWithDebounce
 ```
 
 ### 🌈throttle
-节流函数
 `function throttle(dur: number, fun: Function, endCall?: boolean): Function`
 
 - dur(ms)
 - fun
 - endCall
-> 如果 endCall 是 true , 讲在末尾再执行一次回调，假如 2s 执行一次，但是你 1 秒时停止了操作，但会执行2次 , 默认 true
+If true, Fun will execute again at the end , default true
 
 ```ts
 import { throttle } from 'utils-h'
@@ -71,23 +68,21 @@ ele.onsroll = cbWithThrottle
 ```
 
 ### 🦀LazyLoad
-图片懒加载类
-未加载真正图片的 img 元素增加 data-lazy 属性 和 data-lazy-src 属性
-data-lazy 为 true ， data-lazy-src 为图片真正的 src
-在 vue 和 react 中，请勿动态添加 data-lazy
+only for img , LazyLoad is a class
+
 
 #### constructor
 - `constructor(root?:string)`
-root 是 rootEle 的 id 或者 class , 默认值是 document 。rootEle 和 `IntersectionObserver.root
-` 是同一个意思
+rootEle is the viewable area element of imgs 。root can be class or id
+default is document
 
 #### instance methods
 - `observe()`
-在有新的 img 元素增加时，增加新的监听元素。
-如果你使用 vue 或者 react ， 请确保 img 元素已经渲染
+observe the img elements
+if you use it in vue or react , You need to make sure that the img elements has been rendered
 
 #### disconnect
-停止监听所有 img 元素
+unobserve all img elements
 
 
 ```vue
@@ -133,13 +128,11 @@ img {
 ```
 
 ### 🐻qs
-提取 url 中的数据或者设置 search 参数
-
 `let {qs} from 'utils-h'`
-
 #### methods
+
 - parse(url:string)
-获取 url 各个部分数据，返回对象
+parse url to object
 
 ```ts
  let parseRes = qs.parse('https://abc.com:80/a/b/?a=1#efg')
@@ -160,7 +153,7 @@ img {
 
 
 - getQuery(url:string)
-获取 search (query) 参数
+parse queryString to Object and return
 
 ```ts
 let qo = qs.getQuery('http://abc.com?a=1&b=2')
@@ -175,8 +168,6 @@ console.log(qo)
 
 
 - setQuery(url:string,query:object)
-设置 query (search) 参数
-
 ```ts
   let qo = {
     a:1,
@@ -191,8 +182,6 @@ console.log(qo)
 
 
 ### 🕐getTime
-获取时间参数
-根据你的格式，返回对应格式的时间
 
 ```js
 const time = getTime(format)
@@ -215,9 +204,9 @@ getTime('yy/m/d hh:mimi:ss')  // 23/3/21 08:06:36
 
 
 
-### 🐞Validator
-校验器，doing....
 
+
+### 🐞Validator
 ```js
 const validator = new Validator()
 ```
