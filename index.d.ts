@@ -12,10 +12,10 @@ export class Validator {
   checkEmpty(text: string): boolean
   checkEqual(text1: string, text2: string): boolean
   checkObjEqual(obj1: any, obj2: any, keys?: string[]): boolean
-  checkLen(text: string, minL = -Infinity, maxL = Infinity): boolean
-  checkRange(num: number | string, min = -Infinity, max = Infinity, loose = false): boolean
-  checkIsNum(num: number, loose = false, canbeNaN = false): boolean
-  addRule(rule: function): number
+  checkLen(text: string, minL, maxL): boolean
+  checkRange(num: number | string, min, max, loose): boolean
+  checkIsNum(num: number, loose, canbeNaN): boolean
+  addRule(rule: Function): number
   deleteRule(id: number): boolean
   clear(): void
   checkByRule(rule: number | string, obj: any, options?: any): boolean
