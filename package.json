@@ -1,10 +1,10 @@
 {
   "name": "utils-h",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "utils-package for front-end",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/wtdsn/utils-h/issues"
   },
-  "homepage": "https://github.com/wtdsn/utils-h#readme"
+  "homepage": "https://github.com/wtdsn/utils-h#readme",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
 }

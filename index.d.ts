@@ -7,6 +7,8 @@ export class LazyLoad {
   disconnect(): void
 }
 
+type ruleT = number | 'phone' | 'mail' | 'nameCh' | 'genderCh'
+
 export class Validator {
   constructor();
   checkEmpty(text: string): boolean
@@ -18,7 +20,7 @@ export class Validator {
   addRule(rule: Function): number
   deleteRule(id: number): boolean
   clear(): void
-  checkByRule(rule: number | string, obj: any, options?: any): boolean
+  checkByRule(rule: ruleT, obj: any, options?: any): boolean
 }
 
 

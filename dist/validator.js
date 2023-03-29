@@ -94,20 +94,30 @@ class Validator {
 
 //  TODO add： 日期，密码强弱 ， QQ ， IP ， URL， 身份证，地址
 const rules_h = {
-  phone(text, len = 11) {
-
+  phone(text) {
+    return /^1[0-9]{10}$/.test(text)
   },
 
-  mail() { },
-
-  nameCh() {
-
+  mail(text) {
+    return /^[^\.-]([\w-]*\.?[\w-]+)+@[\w]+\.[A-z]+$/.test(text)
   },
 
-  genderCh(text, choose = ['男', '女']) {
+  nameCh(text) {
+    return /^([\u4e00-\u9fa5]+\.?[\u4e00-\u9fa5]+)+$/.test(text)
+  },
 
+  pw(text, strength = 1) {
+    if (/\s/.test(text)) return false
+    if (strength === 3) {
+      return /[A-z]/.test(text) && /[0-9]/.test(text) && /[\!@\#\$\%\^\&\*\(\)\_\+]/.test(text) && /[\w\!@\#\$\%\^\&\*\(\)\_\+]{8,}/.test(text)
+    } else if (strength === 2) {
+      return /[A-z]/.test(text) && /[0-9]/.test(text) && /[\w\!\@\#\$\%\^\&\*\(\)\_\+]{8,}/.test(text)
+    } else
+      return /[\w\!\@\#\$\%\^\&\*\(\)\_\+]{6,}/.test(text)
   }
 }
 
+// export default Validator
+module.exports = Validator
 
 // let validator = new Validator()
