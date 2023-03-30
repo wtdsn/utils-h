@@ -117,7 +117,7 @@ const rules_h = {
   }
 }
 
-// export default Validator
-module.exports = Validator
+export default Validator
+// module.exports = Validator
 
 // let validator = new Validator()
