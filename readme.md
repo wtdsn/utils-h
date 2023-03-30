@@ -216,22 +216,24 @@ getTime('yy/m/d hh:mimi:ss')  // 23/3/21 08:06:36
 
 
 ### 🐞Validator
-校验器，doing....
+校验器，用于表单数据的校验，
 
 ```js
 const validator = new Validator()
 ```
 
-### methods
-- **checkEmpty(text)**
-if text is empty string or text only has space , it will return false
+### 实例方法
+- **noEmpty(text)**
+如果 text 是空字符串或者仅空格，则返回 false ，否则返回 true
 
-- **checkEqual(text1,text2)**
+- **equal(text1,text2)**
+严格比较 text1 和 text2
 
-- **checkObjEqual(obj1,ibj2,kesy?)**
-examples
+- **objEqual(obj1,ibj2,keys?)**
+根据 keys 指定比较的对象属性，比较对象是否相等
+如果 keys 没有指定，则 keys = Object.keys(obj1)
 
-1. without keys , keys will from Object.keys(obj1)
+不指定 keys
 ```js
 let obj1 = {
   a:1,
@@ -244,7 +246,7 @@ obj2 = {
 validator.checkObjEqual(obj1,obj2) // true
 ```
 
-2. check keys
+指定 keys
 ```js
 let obj1 = {
   a:1,
@@ -261,20 +263,93 @@ obj2 = {
     d:3
   }
 }
+// 比较 a 和 c 下的 d 属性
 validator.checkObjEqual(obj1,obj2,['a','c.d']) // true
 ```
 
-- **checkLen(text,minL,maxL)**
-- **checkRange(num,min,max,loose = false)**
-if loose is true , num can be 'number string'
+- **len(text,minL,maxL)**
+text 的长度是否在 [minL,maxL] 的范围内，如果在即 true ，否则 false
+
+- **range(num,min,max,loose = false)**
+检测 num 数值的范围是否在 [min,max] 内 , 如果 loose 为 true ，则 num 可以为一个字符串数值，比如 '123'
 ```js
-checkRange('12',0,12) // false  '12' is string
-checkRange('12',0,12,true) // true  '12' will translate to 12
+validator.range('12',0,12) // false  '12' is string
+validator.range('12',0,12,true) // true  '12' will translate to 12
 ```
 
-- **checkIsNum(num,loose = false,canbeNaN = false)**
-if loose is true , it can be 'number string'
-if canbeNaN is true , NaN will return true
+- **isNum(num,loose = false,canbeNaN = false)**
+检测 num 是否是一个数值，loose 为 true1 ，表示字符串数值（'12'） 也认为是数值
+canbeNaN 如果为 true ，则 NaN 也返回 true
+其他情况非数值返回 false
 
 
-- ... doing
+- **phone(text)**
+根据传入的数值或字符串，检测是否为号码
+
+- **mail(text)**
+根据传入的字符串，检测是否为邮箱
+
+- **nameCh(text)**
+根据传入的字符串，检测是否为中文的名字，包括 XXX·XXX·XXX 的格式
+
+- **pw(text,strength = 1)**
+检测密码的强度
+strength = 1 时 ， 限制长度不小于 6
+strength = 2 时 ， 限制长度不小于 8,且必须包含数值和英文
+strength = 1 时 ， 限制长度不小于 6 ，且必须包含数值，英文和特殊字符（部分特殊字符不支持）
+
+- **addRule(rule:function)**
+传入一个自定义检测函数 ， 返回一个 id
+
+- **clear()**
+清空所有自定义函数
+
+- **checkByRule(rule,...args:any)**
+传入 rule , 使用 rule 对应的方法对数据进行检测
+rule 可以是自定义函数的 id ，也可以是 isNum ，mail 等字符串
+
+```js
+let id = addRule((text)=>{
+  return !!text
+})
+checkByRule(id,'abc') // true
+
+checkByRule('phone','12312312312') // true
+```
+
+- **checkByRules(rules)**
+对于大量数据需要校验时，rules 只是一个配置，checkByRules 函数会根据配置，主动进行检测
+返回一个 promise ， 如果所有检测都是 true ，则 resolve 为 true
+否则 resolve 为第一个 false 的检测的错误提示
+
+rules 是对象数组，对象包括三个元素 `rule` , `errText` , `args`
+rule 可以是自定义检测函数的 id ，也可以是 `isNum` ,`phone` 等字符串
+errText 是抛出的错误提示文字
+args 是检测函数的参数数组
+
+```js
+const rules = [
+      {
+        rule: "noEmpty",
+        errText: "名字不能为空",
+        args: [' asd  ']
+      },
+      {
+        rule: "phone",
+        errText: "号码不正确",
+        args: ['123asd']
+      },
+      {
+        rule: 'len',
+        errText: "长度不符合",
+        args: ['123', 2, 4]
+      }
+    ]
+
+validator.checkByRules(rules).then((r) => {
+      // all true
+    }, err => {
+      // first err
+      // err === 号码不正确
+    })
+```

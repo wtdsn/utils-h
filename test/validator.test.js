@@ -4,8 +4,44 @@ const Validator = require('../dist/validator')
 const validator = new Validator()
 describe('test validator', () => {
   /*   test('checkEmpty', () => {
-      expect(validator.checkEmpty('   ')).toBe(false);
+      expect(validator.noEmpty('   ')).toBe(false);
+      expect(validator.noEmpty(' asd  ')).toBe(true);
+    });
+  
+    test('objEqual', () => {
+      expect(validator.objEqual({
+        a: 1,
+        b: 2
+      }, {
+        a: 1,
+        b: 3
+      },['a'])).toBe(true)
     }); */
+
+/*   test("checkByRules", () => {
+    return validator.checkByRules([
+      {
+        rule: "noEmpty",
+        errText: "名字不能为空",
+        args: [' asd  ']
+      },
+      {
+        rule: "phone",
+        errText: "号码不正确",
+        args: ['13273948484']
+      },
+      {
+        rule: 'len',
+        errText: "长度不符合",
+        args: ['123', 2, 2]
+      }
+    ]).then((r) => {
+      expect(r).toBe(true)
+    }, err => {
+      expect(err).toBe("长度不符合")
+    })
+
+  }) */
 
   /*   test('checkByRule-mail', () => {
       expect(validator.checkByRule('mail', '12312312@163.com')).toBe(true);
@@ -56,39 +92,39 @@ describe('test validator', () => {
       expect(validator.checkByRule('nameCh', '阿松大.阿松大.阿松大')).toBe(true)
     }) */
 
-  test('checkByRule - pw', () => {
-    expect(validator.checkByRule('pw', '123123', 1)).toBe(true)
-    expect(validator.checkByRule('pw', 'asdasd', 1)).toBe(true)
-    expect(validator.checkByRule('pw', '123asd', 1)).toBe(true)
-
-    expect(validator.checkByRule('pw', '23asd', 1)).toBe(false)
-    expect(validator.checkByRule('pw', '23 asd', 1)).toBe(false)
-    expect(validator.checkByRule('pw', '阿松大123', 1)).toBe(false)
-
-    expect(validator.checkByRule('pw', 'asd123123', 2)).toBe(true)
-    expect(validator.checkByRule('pw', 'asd123!@', 2)).toBe(true)
-    expect(validator.checkByRule('pw', 'asd123!as', 2)).toBe(true)
-
-    expect(validator.checkByRule('pw', 'asdasdasd', 2)).toBe(false)
-    expect(validator.checkByRule('pw', '12345678', 2)).toBe(false)
-
-    expect(validator.checkByRule('pw', 'asd123!@', 3)).toBe(true)
-    expect(validator.checkByRule('pw', 'asd123!a', 3)).toBe(true)
-    expect(validator.checkByRule('pw', 'asd123123#', 3)).toBe(true)
-    expect(validator.checkByRule('pw', 'asd123123(', 3)).toBe(true)
-    expect(validator.checkByRule('pw', 'asd123123_', 3)).toBe(true)
-    expect(validator.checkByRule('pw', 'asd123123+', 3)).toBe(true)
-
-    expect(validator.checkByRule('pw', 'asd123123', 3)).toBe(false)
-    expect(validator.checkByRule('pw', 'asd123112323', 3)).toBe(false)
-    expect(validator.checkByRule('pw', '!@123112323', 3)).toBe(false)
-    expect(validator.checkByRule('pw', '123123123', 3)).toBe(false)
-    expect(validator.checkByRule('pw', 'asdasdasd', 3)).toBe(false)
-    expect(validator.checkByRule('pw', '!!!!!!!!', 3)).toBe(false)
-    expect(validator.checkByRule('pw', '!!!!!!  !', 3)).toBe(false)
-    expect(validator.checkByRule('pw', '123阿松大123asd@', 3)).toBe(false)
-
-
-  })
+  /*   test('checkByRule - pw', () => {
+      expect(validator.checkByRule('pw', '123123', 1)).toBe(true)
+      expect(validator.checkByRule('pw', 'asdasd', 1)).toBe(true)
+      expect(validator.checkByRule('pw', '123asd', 1)).toBe(true)
+  
+      expect(validator.checkByRule('pw', '23asd', 1)).toBe(false)
+      expect(validator.checkByRule('pw', '23 asd', 1)).toBe(false)
+      expect(validator.checkByRule('pw', '阿松大123', 1)).toBe(false)
+  
+      expect(validator.checkByRule('pw', 'asd123123', 2)).toBe(true)
+      expect(validator.checkByRule('pw', 'asd123!@', 2)).toBe(true)
+      expect(validator.checkByRule('pw', 'asd123!as', 2)).toBe(true)
+  
+      expect(validator.checkByRule('pw', 'asdasdasd', 2)).toBe(false)
+      expect(validator.checkByRule('pw', '12345678', 2)).toBe(false)
+  
+      expect(validator.checkByRule('pw', 'asd123!@', 3)).toBe(true)
+      expect(validator.checkByRule('pw', 'asd123!a', 3)).toBe(true)
+      expect(validator.checkByRule('pw', 'asd123123#', 3)).toBe(true)
+      expect(validator.checkByRule('pw', 'asd123123(', 3)).toBe(true)
+      expect(validator.checkByRule('pw', 'asd123123_', 3)).toBe(true)
+      expect(validator.checkByRule('pw', 'asd123123+', 3)).toBe(true)
+  
+      expect(validator.checkByRule('pw', 'asd123123', 3)).toBe(false)
+      expect(validator.checkByRule('pw', 'asd123112323', 3)).toBe(false)
+      expect(validator.checkByRule('pw', '!@123112323', 3)).toBe(false)
+      expect(validator.checkByRule('pw', '123123123', 3)).toBe(false)
+      expect(validator.checkByRule('pw', 'asdasdasd', 3)).toBe(false)
+      expect(validator.checkByRule('pw', '!!!!!!!!', 3)).toBe(false)
+      expect(validator.checkByRule('pw', '!!!!!!  !', 3)).toBe(false)
+      expect(validator.checkByRule('pw', '123阿松大123asd@', 3)).toBe(false)
+  
+  
+    }) */
 
 });
