@@ -7,7 +7,7 @@ export class LazyLoad {
   disconnect(): void
 }
 
-type ruleT = number | 'phone' | 'mail' | 'nameCh' | 'genderCh'
+type ruleT = number | 'phone' | 'mail' | 'nameCh'
 
 export class Validator {
   constructor();
