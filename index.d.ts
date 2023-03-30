@@ -7,20 +7,27 @@ export class LazyLoad {
   disconnect(): void
 }
 
-type ruleT = number | 'phone' | 'mail' | 'nameCh'
+type ruleT = number | 'phone' | 'mail' | 'nameCh' | 'noEmpty' | 'equal' | 'objEqual' | 'len' | 'range' | 'isNum'
+
+interface ruleInter {
+  errText?: string
+  rule: ruleT
+  args: any[]
+}
 
 export class Validator {
   constructor();
-  checkEmpty(text: string): boolean
-  checkEqual(text1: string, text2: string): boolean
-  checkObjEqual(obj1: any, obj2: any, keys?: string[]): boolean
-  checkLen(text: string, minL, maxL): boolean
-  checkRange(num: number | string, min, max, loose): boolean
-  checkIsNum(num: number, loose, canbeNaN): boolean
+  noEmpty(text: string): boolean
+  equal(text1: string, text2: string): boolean
+  objEqual(obj1: any, obj2: any, keys?: string[]): boolean
+  len(text: string, minL: number, maxL: number): boolean
+  range(num: number | string, min: number, max: number, loose: boolean): boolean
+  isNum(num: number, loose: boolean, canbeNaN: boolean): boolean
   addRule(rule: Function): number
-  deleteRule(id: number): boolean
+  // deleteRule(id: number): boolean
   clear(): void
-  checkByRule(rule: ruleT, obj: any, options?: any): boolean
+  checkByRule(rule: ruleT, ...args: any): boolean
+  checkByRules(rules: ruleInter[]): Promise
 }
 
 
