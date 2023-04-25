@@ -8,15 +8,14 @@ function throttle(dur, fun, endCall = true) {
         clearTimeout(timer)
         timer = 0
       }
-
-      fun.call(this.arguments)
+      fun.apply(this, arguments)
       pre = cur
 
       return
     }
     if (endCall && !timer) {
       timer = setTimeout(() => {
-        fun.call(this.arguments)
+        fun.apply(this, arguments)
         pre = cur
         timer = 0
       }, dur)
