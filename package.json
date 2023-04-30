@@ -2,9 +2,12 @@
   "name": "utils-h",
   "version": "1.1.2",
   "description": "utils-package for front-end",
-  "main": "index.js",
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "buildcjs": "node ./esbuildcjs.config.js",
+    "buildesm": "node ./esbuildesm.config.js"
   },
   "repository": {
     "type": "git",
@@ -12,11 +15,10 @@
   },
   "files": [
     "dist",
-    "index.js",
     "index.d.ts"
   ],
   "keywords": [
-    "utils",    
+    "utils",
     "tool"
   ],
   "author": "wtdsn",
@@ -26,6 +28,7 @@
   },
   "homepage": "https://github.com/wtdsn/utils-h#readme",
   "devDependencies": {
+    "esbuild": "^0.17.18",
     "jest": "^29.5.0"
   }
 }
