@@ -1,6 +1,6 @@
 {
   "name": "utils-h",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "utils-package for front-end",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "index.d.ts"
   ],
   "keywords": [
-    "utils",
+    "utils",    
     "tool"
   ],
   "author": "wtdsn",
