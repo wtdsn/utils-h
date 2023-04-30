@@ -1,6 +1,6 @@
 {
   "name": "utils-h",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "utils-package for front-end",
   "main": "index.cjs.js",
   "module": "index.esm.js",
